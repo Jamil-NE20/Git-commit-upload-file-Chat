@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitHub Commits</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+  <body>
+    <div id="demo">
+      <h1>Latest Jamil-Portfolio Commits</h1>
+      
+      <p>Jamil-Portfolio@{{ currentBranch }}</p>
+      <ul>
+        <li v-for="record in commits">
+          <a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 6) }}</a>
+          <span class="message">{{ record.commit.message | truncate }}</span>
+		<br />
+       
+          <span class="author">
+		<a :href="record.author.html_url" target="_blank">{{ record.commit.author.name }}</a>
+	  </span>
+         <span class="date">{{ record.commit.author.date | formatDate }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      var apiURL = "https://api.github.com/repos/Jamil-NE20/Jamil-Portfolio/commits?per_page=1&sha=";
+
+    
+
+      /**
+       * Actual demo
+       */
+
+      var demo = new Vue({
+        el: "#demo",
+
+        data: {
+          branches: ["master"],
+          currentBranch: "master",
+          commits: null
+        },
+
+        created: function() {
+          this.fetchData();
+        },
+
+        watch: {
+          currentBranch: "fetchData"
+        },
+
+        filters: {
+          truncate: function(v) {
+            var newline = v.indexOf("\n");
+            return newline > 0 ? v.slice(0, newline) : v;
+          },
+          formatDate: function(v) {
+            return v.replace(/T|Z/g, " ");
+          }
+        },
+
+        methods: {
+          fetchData: function() {
+            var xhr = new XMLHttpRequest();
+            var self = this;
+            xhr.open("GET", apiURL + self.currentBranch);
+            xhr.onload = function() {
+              self.commits = JSON.parse(xhr.responseText);
+              console.log(self.commits[0].html_url);
+            };
+            xhr.send();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

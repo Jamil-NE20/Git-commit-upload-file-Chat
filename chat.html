@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 40px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style>
+    </head>
+    <body>
+	
+	
+
+
+
+	
+        <h2>Chat Messages For On Boarding Rehab</h2>
+
+<div class="container">
+  <h2>These are our rooms</h2>
+  <button type="button" class="btn">Moderator</button>
+  <button type="button" class="btn btn-primary">Case Officer</button>
+  <button type="button" class="btn btn-secondary">Expert in the Field</button>
+  <button type="button" class="btn btn-success">Card 1</button>
+  <button type="button" class="btn btn-info">Card 2</button>
+  <button type="button" class="btn btn-warning">Card 3</button>
+  <button type="button" class="btn btn-danger">Card 4</button>
+  <button type="button" class="btn btn-dark">Card 5</button>
+  <button type="button" class="btn btn-light">Community All</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>
+
+
+
+
+
+    <div class="card" style="max-width: 500px;">
+    <div class="row no-gutters">
+        <div class="col-sm-5" style="background: #868e96;">
+            <img src="images/sample.svg" class="card-img-top h-100" alt="...">
+        </div>
+        <div class="col-sm-7">
+            <div class="card-body">
+                <h5 class="card-title">John Adams</h5>
+                <p class="card-text">John Adams is a certified manager based in London. He is specialized in XYZ, TTFA, MSNKZ, APEX.</p>
+                <a href="#" class="btn btn-primary stretched-link">View Extended Contact Information</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  
+
+  
+<div id="todo-list-example">
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">Add a message</label>
+    <input
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="E.g. Feed the cat"
+    >
+    <button>Add</button>
+  </form>
+
+</div>
+
+
+
+  <h2>Earlier Conversation</h2>
+<div class="container">
+  <style="width:100%;">
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+
+<div class="container darker">
+  <class="right" style="width:100%;">
+  <p>It been a struggle and he does not want to read the cards</p>
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container">
+  <style="width:100%;">
+  <p>How can I help you?</p>
+  <span class="time-right">11:02</span>
+</div>
+
+<div class="container darker">
+  <class="right" style="width:100%;">
+  <p>I need some new cards to work with!</p>
+  <span class="time-left">11:05</span>
+</div>
+
+
+<div class="container">
+  <h2>These are our rooms</h2>
+  <button type="button" class="btn">Moderator</button>
+  <button type="button" class="btn btn-primary">Case Officer</button>
+  <button type="button" class="btn btn-secondary">Expert in the Field</button>
+  <button type="button" class="btn btn-success">Card 1</button>
+  <button type="button" class="btn btn-info">Card 2</button>
+  <button type="button" class="btn btn-warning">Card 3</button>
+  <button type="button" class="btn btn-danger">Card 4</button>
+  <button type="button" class="btn btn-dark">Card 5</button>
+  <button type="button" class="btn btn-light">Community All</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>   
+
+
+<script>
+
+
+Vue.component('todo-item', {
+template: '\
+  <button type="button" class="right" class="btn btn-outline-dark btn-block">\
+    {{ title }}\
+    <button v-on:click="$emit(\'remove\')">Remove</button>\
+  </button>\
+',
+props: ['title']
+})
+
+
+
+new Vue({
+  el: '#todo-list-example',
+  data: {
+    newTodoText: '',
+    todos: [
+      {
+        id: 1,
+        title: 'Do the Homework',
+      },
+      {
+        id: 2,
+        title: 'He is not willing to work',
+      },
+      {
+        id: 3,
+        title: 'Do you need new cards?            '
+      }
+    ],
+    nextTodoId: 4
+  },
+  methods: {
+    addNewTodo: function () {
+      this.todos.push({
+        id: this.nextTodoId++,
+        title: this.newTodoText
+      })
+      this.newTodoText = ''
+    }
+  }
+})	
+
+
+</script>
+		
+		
+		
+		
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Virginia App</title>
+</head>
+
+<body>
+  <main><h1>Virginia App</h1></main>
+ 
+  <section class="section">
+    <div class="form-group col-md-10">
+      <label for="file">Choose a Files:</label>
+      <input type="file" id="file"  @change="onFileChanged" name="file" accept="image/png, image/jpeg, image/pdf, /doc">
+      <button id="btnSave" type="submit" @click="uploadFile" class="btn btn-primary btn-sm 	margin">Upload</button>
+
+
+</div>
+</section>
+
+<div class="container">
+      <div class="row col-md-3 font">
+      <h5> Child Detail</h5>
+      </div>
+     
+   <div class="align-items-center">
+    
+    <br/>
+      <div class="form-row text-left font">
+        <div class="form-group col-md-5 margin">
+           <label for="validationCustom01"> Child Name: </label>
+      
+        </div> 
+     
+
+       <div class="form-group col-md-5 margin">
+         <label for="validationCustom04 ">Phone number</label>
+      
+        </div>
+
+     </div>
+  </div>
+</div>
+
+
+
+	 <div class="row">
+        <div class="col-md-6 text-left">
+            <h4 class="">Child Name : {{user.ChildFirstName}} {{user.ChildMiddleName}} {{user.ChildLastName}}</h4>
+            <h4> Date of Birth: {{user.ChildDateOfBirth}}</h4>
+            <h4>Age: {{}}</h4>
+	    <h4>Gender: {{user.ChildGender}}</h4
+            </div>
+            </div>
+
+	 <div class="row">
+        <div class="col-md-6 text-left">
+         <h4 class="">Diagnsis: {{user.ChildDiagnosis}}</h4>
+            <h4> Insurance: {{user.ChildMedicalInsurance}}</h4>
+            <h4> Zip-Code: {{user.ZipCode}}</h4>
+		           
+        </div>
+        </div>
+     
+	</div>
+      </div>
+    
+    </div>
+	
+
+  
+  <script>
+   
+   data() {
+  return {
+    selectedFile: null
+  }
+},
+
+methods: {
+  onFileChanged (event) {
+    this.selectedFile = event.target.files[0]
+  },
+  uploadFile() {
+   axios.post('https://testvirginia.azurewebsites.net/api/Function1?', this.selectedFile)
+  }
+
+
+  </script>
+</body>
+
+</html>
